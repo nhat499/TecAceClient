@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <main>
+
+        
+            <h1>TecAce Interview Project</h1>
+            <h2>Project specification</h2>
+            <a href="https://docs.google.com/spreadsheets/d/1BjsH5S-8vNwJxlM5CCQiTkvXsahmkDqc_RfRlgQWM9g/edit#gid=62653732" target="_blank">Link to google spreadsheet</a>
+            <img id="projectSpec" src="image/projectSpec.png">
+            <containerGet class="apiContainer">
+                <img src="image/getMethod.png">
+                <div>
+                    <button id="callGetBtn">call get</button>
+                    <button id="clearGet">clear</button>
+                </div>
+                <pre id="getResult"></pre>
+            </containerGet>
+            
+            <containerGet class="apiContainer">
+                <img src="image/postMethod.png">
+                <div>
+                    <input id="postKey" type="text" placeholder="key">
+                    <input id="postValue" type="text" placeholder="value">
+                    <button id="callPostBtn">call post</button>
+                    <button id="clearPost">clear</button>
+                </div>
+                <pre id="postResult"></pre>
+            </containerGet>
+
+            <containerGet class="apiContainer">
+                <img src="image/deleteMethod.png">
+                <div>
+                    <input id="deleteKey" type="text" placeholder="key to Delete">
+                    <button id="callDeleteBtn">call delete</button>
+                    <button id="clearDelete">clear</button>
+                </div>
+                <pre id="deleteResult"></pre>
+            </containerGet>
+        </main>
+    </body>
+</html>

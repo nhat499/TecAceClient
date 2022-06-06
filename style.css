@@ -1,0 +1,54 @@
+
+
+.apiContainer {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px black dashed;
+    margin: 10px;
+    width: fit-content;
+}
+
+button {
+    height: 50px;
+    min-width: 100px;
+}
+
+#projectSpec {
+    height: 200px;
+    width: 800px;
+}
+
+pre {
+    margin: 10px;
+    border: 1px black solid;
+    max-height: fit-content;
+    max-width: fit-content;
+    min-width: 300px;
+    padding: 10px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+
+}
+
+img {
+    width: 469px;
+    height: auto;
+}
+
+input {
+    width: 100px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-self:center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
