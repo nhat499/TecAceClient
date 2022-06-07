@@ -1,5 +1,8 @@
+/**
+ * Nhat Trang
+ * June 7th 2022
+ */
 
-console.log("hello world");
 let baseurl = "https://tecacesever.herokuapp.com/"
 
 // https request buttons
@@ -28,20 +31,24 @@ clearDeleteBtn.addEventListener("click", () => {
     clearRespond("deleteResult");
 })
 
+// show request is loading
 function loading(textBoxId) {
     let text = document.getElementById(textBoxId);
     clearRespond(text.id);
-    console.log(text);
     let loadingCirle = text.nextElementSibling;
     if(loadingCirle) loadingCirle.classList.toggle("hidden");
-    //console.log(textBox);
 }
 
+// the result container
 function clearRespond(textId) {
     let text = document.getElementById(textId);
     text.innerHTML = "";
 }
 
+/**
+ *  make a Delete call to delete a key from spreadsheet
+ *  key require
+ * */ 
 function deleteSpreadSheet() {
     let text = document.getElementById("deleteResult");
     loading(text.id);
@@ -63,16 +70,19 @@ function deleteSpreadSheet() {
     })
 }
 
+/**
+ * make a Post call to add a new paired value to spreadsheet
+ * or update the value of the existing key
+ * key require
+ * */ 
 function postSpreadSheet() {
     let key = document.getElementById("postKey").value;
     let value = document.getElementById("postValue").value;
     let text = document.getElementById("postResult");
     loading(text.id);
-    //console.log(key + "         " + value);
     let data = {};
     data[key] = value;
     let url = baseurl + "data";
-    console.log(data);
     fetch(url, {
         method: "POST",
         headers: {
@@ -95,6 +105,10 @@ function postSpreadSheet() {
 
 }
 
+/**
+ * make get request to get all the paired value data from
+ * the spread sheet
+ */
 function getSpreadSheet() {
     let text = document.getElementById("getResult");
     loading(text.id);
@@ -102,7 +116,6 @@ function getSpreadSheet() {
         .then(respond => respond.json())
         .then(data => {
             let prettyData = JSON.stringify(data, null, 4)
-            console.log(text.id);
             loading(text.id);
             text.innerHTML = prettyData;
         })
