@@ -28,12 +28,23 @@ clearDeleteBtn.addEventListener("click", () => {
     clearRespond("deleteResult");
 })
 
-function clearRespond(textBoxId) {
-    let textBox = document.getElementById(textBoxId);
-    textBox.innerHTML = "";
+function loading(textBoxId) {
+    let text = document.getElementById(textBoxId);
+    clearRespond(text.id);
+    console.log(text);
+    let loadingCirle = text.nextElementSibling;
+    if(loadingCirle) loadingCirle.classList.toggle("hidden");
+    //console.log(textBox);
+}
+
+function clearRespond(textId) {
+    let text = document.getElementById(textId);
+    text.innerHTML = "";
 }
 
 function deleteSpreadSheet() {
+    let text = document.getElementById("deleteResult");
+    loading(text.id);
     let key = document.getElementById("deleteKey").value;
     let url = baseurl + "data/" + key;
     fetch(url, {
@@ -41,20 +52,22 @@ function deleteSpreadSheet() {
     })
     .then(respond => respond.json())
     .then(data => {
-        console.log(data);
-        let text = document.getElementById("deleteResult");
         let prettyData = JSON.stringify(data, null, 4);
+        loading(text.id);
         text.innerHTML = prettyData;
+        
     })
     .catch(err => {
+        loading(text.id);
         window.alert("error");
     })
 }
 
-
 function postSpreadSheet() {
     let key = document.getElementById("postKey").value;
     let value = document.getElementById("postValue").value;
+    let text = document.getElementById("postResult");
+    loading(text.id);
     //console.log(key + "         " + value);
     let data = {};
     data[key] = value;
@@ -71,32 +84,30 @@ function postSpreadSheet() {
     })
     .then(respond => respond.json())
     .then((data) => {
-        //console.log(data);
-
-        let text = document.getElementById("postResult");
         let prettyData = JSON.stringify(data, null, 4);
+        loading(text.id);
         text.innerHTML = prettyData;
-
     })
     .catch (err => {
+        loading(text.id);
         window.alert("error");
     })
 
 }
 
 function getSpreadSheet() {
+    let text = document.getElementById("getResult");
+    loading(text.id);
     fetch(baseurl)
         .then(respond => respond.json())
         .then(data => {
-            let text = document.getElementById("getResult");
             let prettyData = JSON.stringify(data, null, 4)
+            console.log(text.id);
+            loading(text.id);
             text.innerHTML = prettyData;
         })
-        .then(() => {
-            console.log("success");
-        })
         .catch(err => {
+            loading(textBox.id);
             window.alert("error");
-            console.log(err);
         })
 }
