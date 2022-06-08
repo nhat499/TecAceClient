@@ -66,7 +66,7 @@ function deleteSpreadSheet() {
     })
     .catch(err => {
         loading(text.id);
-        window.alert("error");
+        window.alert("error: require input");
     })
 }
 
